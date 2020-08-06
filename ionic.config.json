@@ -1,0 +1,7 @@
+{
+  "name": "transit",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
