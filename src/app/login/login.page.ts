@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
         inputUsername: [null],
         inputPassword: [null]
       }
-    )
+    );
   }//end onInit
 
   ionViewWillEnter() {
@@ -53,9 +53,9 @@ export class LoginPage implements OnInit {
     if(this.email ==  null || this.password == null){
       this.errorMessage = "Username or password cannot be empty!";
     } else{
-      this.errorMessage = "";
       this.authService.login(this.email, this.password);
       this.LoginForm.reset();
+      console.log("1 " + this.authService.AuthError);
     }
   }//end submit
 

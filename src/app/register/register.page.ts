@@ -36,7 +36,25 @@ export class RegisterPage implements OnInit {
         inputEmail: [null],
         inputPassword: [null]
       }
-    )
+    );
+
+    this.RegisterForm.valueChanges
+      .subscribe((formData) => {
+        //email validation
+          if (formData.inputEmail !== null) {
+            var i = 0;
+            while (i < formData.inputEmail.length) {
+             if (formData.inputEmail[i].charCodeAt() != 64) {
+                this.errorMessage = "Email must be valid";
+              } else {
+                this.errorMessage = ""
+                break
+              }
+              i++
+            } // end while
+          }
+      })//end subscribe
+    
   }//end init
 
   ionViewWillEnter() {
@@ -56,9 +74,14 @@ export class RegisterPage implements OnInit {
     this.email = this.RegisterForm.value.inputEmail;
     this.password = this.RegisterForm.value.inputPassword;
 
+    if(this.password.length <= 7){
+      this.errorMessage = "Password must be 7 or more characters";
+    } else{
+      this.authService.signup(this.email, this.password);
+      this.email = this.password = '';
+    }
     
-    this.authService.signup(this.email, this.password);
-    this.email = this.password = '';
+    
   }
 
 }
