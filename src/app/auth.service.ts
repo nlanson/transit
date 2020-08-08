@@ -11,7 +11,14 @@ import { first, tap } from 'rxjs/operators';
 export class AuthService {
   user: Observable<firebase.User>;
   authState: boolean;
+  
   AuthError: string;
+  fbErrorMessage: Array<string> = [
+    'There is no user record corresponding to this identifier. The user may have been deleted.', //no user found login
+    'The password is invalid or the user does not have a password.', //incorrect password login
+    'The email address is badly formatted.', //bad email shape login reg
+    'The email address is already in use by another account.' //user already exists reg
+  ];
 
   constructor(
     private firebaseAuth: AngularFireAuth,
@@ -31,6 +38,7 @@ export class AuthService {
       .catch(err => {
         console.log('Something went wrong:',err.message);
         this.AuthError = err.message;
+        this.alert();
 
       });    
   }
@@ -46,7 +54,7 @@ export class AuthService {
       .catch(err => {
         console.log('Something went wrong:',err.message);
         this.AuthError = err.message;
-
+        this.alert();
       });
   }
 
@@ -55,4 +63,37 @@ export class AuthService {
       .signOut();
       console.log("logged out");
   }
+
+  alert(){
+    if(this.AuthError != null){
+      switch(this.AuthError){
+        case this.fbErrorMessage[0]:
+          this.AuthError = 'User not found';
+          break;
+        case this.fbErrorMessage[1]:
+          this.AuthError = 'Incorrect Password';
+          break;
+        case this.fbErrorMessage[2]:
+          this.AuthError = 'Please enter a valid email address';
+          break;
+        case this.fbErrorMessage[3]:
+          this.AuthError = 'User already exists'
+          break;
+        default:
+          this.AuthError = 'Credentials Invalid';
+          break;
+      }//end switch  
+      this.presentAlert();
+    }
+  }//end alert check
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Auth Failed',
+      message: this.AuthError,
+      buttons: ['Ok']
+    });
+
+    await alert.present();
+  }//end alert
 }

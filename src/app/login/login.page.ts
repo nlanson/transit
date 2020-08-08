@@ -55,7 +55,7 @@ export class LoginPage implements OnInit {
     } else{
       this.authService.login(this.email, this.password);
       this.LoginForm.reset();
-      console.log("1 " + this.authService.AuthError);
+
     }
   }//end submit
 

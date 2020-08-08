@@ -18,6 +18,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      //Check for user auth state
       return new Promise((resolve, reject) => {
         firebase.auth().onAuthStateChanged((user: firebase.User) => {
           if (user) {
