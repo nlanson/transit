@@ -28,9 +28,10 @@ ionic cordova build ios --prod
 ```
 <br>
 
-Open the .xcodeproj file located in platforms/ios.
-Connect your phone via USB and select it as run target.
+Open the .xcodeproj file located in platforms/ios.<br>
+Connect your phone via USB and select it as run target. <br>
 Click on the Run button on Xcode and run the app on your device.
 <br><br>
 If Xcode throws a signing error, go to "Signing and Capabilities" tab, rename the "Bundle Identifier" and hit "Try Again"
+<br>
 Once resolved, click on the Run button on Xcode and run the app on your device.
