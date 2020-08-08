@@ -1,9 +1,3 @@
-# transit
+Built using Angular 10, Ionic 5 and Fireabse.
 
-cd into master and run
 
-npm install
-
-then, once dependencies are intalled run
-
-ionic serve.
