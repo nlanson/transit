@@ -54,6 +54,7 @@ export class RegisterPage implements OnInit {
             } // end while
           }
       })//end subscribe
+
     
   }//end init
 
@@ -74,12 +75,16 @@ export class RegisterPage implements OnInit {
     this.email = this.RegisterForm.value.inputEmail;
     this.password = this.RegisterForm.value.inputPassword;
 
-    if(this.password.length <= 7){
+    if (this.email == null || this.password == null){
+      this.errorMessage = "Registration fields cannot be empty"
+    }
+    else if(this.password.length <= 7){
       this.errorMessage = "Password must be 7 or more characters";
-    } else{
+    } 
+    else {
       this.authService.signup(this.email, this.password);
       this.email = this.password = '';
-    }
+    }//end if
     
     
   }
