@@ -1,6 +1,7 @@
 # Transit
 Transit is an app to record employee info.
 Built using Angular 10, Ionic 5 and Firebase.
+<br>
 
 ## Preview on Browser
 Clone into the repository and install dependencies with
@@ -13,6 +14,8 @@ Use the ionic cli to host on a local nodejs server
 ```
 ionic serve
 ```
+
+<br>
 
 ## Deploy to iOS
 
