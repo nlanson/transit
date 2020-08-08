@@ -1,10 +1,36 @@
-#transit
+# Transit
+Transit is an app to record employee info.
+Built using Angular 10, Ionic 5 and Firebase.
 
-Built using Angular 10, Ionic 5 and Fireabse.
+## Preview on Browser
+Clone into the repository and install dependencies with
+```
+npm install
+```
+<br>
 
-Clone and install dependencies 
+Use the ionic cli to host on a local nodejs server
+```
+ionic serve
+```
 
-Install Ionic CLI
+## Deploy to iOS
 
-Run: "ionic serve" to preview.
+Clone into the repository and install dependencies with
+```
+npm install
+```
+<br>
 
+Convert into an xcode project using 
+```
+ionic cordova build ios --prod
+```
+<br>
+
+Open the .xcodeproj file located in platforms/ios.
+Connect your phone via USB and select it as run target.
+Click on the Run button on Xcode and run the app on your device.
+<br>
+If Xcode throws a signing error, go to "Signing and Capabilities" tab, rename the "Bundle Identifier" and hit "Try Again"
+Once resolved, click on the Run button on Xcode and run the app on your device.
