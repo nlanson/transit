@@ -1,4 +1,4 @@
-# Transit
+# TransitApp
 Transit is an app to record employee info.
 Built using Angular 10, Ionic 5 and Firebase.
 <br>
@@ -25,7 +25,7 @@ npm install
 ```
 <br>
 
-Convert into an xcode project using 
+Convert into an xcode project using
 ```
 ionic cordova build ios --prod
 ```
