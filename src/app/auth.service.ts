@@ -12,12 +12,14 @@ export class AuthService {
   user: Observable<firebase.User>;
   authState: boolean;
   
-  AuthError: string;
+  alertHeader: string;
+  AuthMessage: string;
   fbErrorMessage: Array<string> = [
     'There is no user record corresponding to this identifier. The user may have been deleted.', //no user found login
     'The password is invalid or the user does not have a password.', //incorrect password login
     'The email address is badly formatted.', //bad email shape login reg
-    'The email address is already in use by another account.' //user already exists reg
+    'The email address is already in use by another account.', //user already exists reg
+    'Registration Successful' //user reg worked
   ];
 
   constructor(
@@ -33,11 +35,13 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Success!', value);
+        this.AuthMessage = "Registration Successful";
+        this.alert();
         this.navroute.navigate(['/login']);
       })
       .catch(err => {
         console.log('Something went wrong:',err.message);
-        this.AuthError = err.message;
+        this.AuthMessage = err.message;
         this.alert();
 
       });    
@@ -53,7 +57,7 @@ export class AuthService {
       })
       .catch(err => {
         console.log('Something went wrong:',err.message);
-        this.AuthError = err.message;
+        this.AuthMessage = err.message;
         this.alert();
       });
   }
@@ -64,33 +68,42 @@ export class AuthService {
       console.log("logged out");
   }
 
-  alert(){
-    if(this.AuthError != null){
-      switch(this.AuthError){
+  alert(){ //setting alert details
+    if(this.AuthMessage != null){
+      switch(this.AuthMessage){
         case this.fbErrorMessage[0]:
-          this.AuthError = 'User not found';
+          this.AuthMessage = 'User not found';
+          this.alertHeader = 'Login Failed'
           break;
         case this.fbErrorMessage[1]:
-          this.AuthError = 'Incorrect Password';
+          this.AuthMessage = 'Incorrect Password';
+          this.alertHeader = 'Login Failed'
           break;
         case this.fbErrorMessage[2]:
-          this.AuthError = 'Please enter a valid email address';
+          this.AuthMessage = 'Please enter a valid email address';
+          this.alertHeader = 'Login Failed'
           break;
         case this.fbErrorMessage[3]:
-          this.AuthError = 'User already exists'
+          this.AuthMessage = 'User already exists'
+          this.alertHeader = 'Registration Failed'
+          break;
+        case this.fbErrorMessage[4]:
+          this.AuthMessage = 'Registration Successful'
+          this.alertHeader = 'Registration'
           break;
         default:
-          this.AuthError = 'Credentials Invalid';
+          this.AuthMessage = 'Credentials Invalid';
+          this.alertHeader = 'Authentication Error'
           break;
       }//end switch  
       this.presentAlert();
     }
   }//end alert check
 
-  async presentAlert() {
+  async presentAlert() { //display alert
     const alert = await this.alertController.create({
-      header: 'Auth Failed',
-      message: this.AuthError,
+      header: this.alertHeader,
+      message: this.AuthMessage,
       buttons: ['Ok']
     });
 

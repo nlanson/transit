@@ -54,7 +54,12 @@ export class LoginPage implements OnInit {
       this.errorMessage = "Username or password cannot be empty!";
     } else{
       this.authService.login(this.email, this.password);
-      this.LoginForm.reset();
+      
+      setTimeout(() => //time delay to clear password field
+        {
+          this.LoginForm.controls['inputPassword'].reset();
+        },
+        1500);
 
     }
   }//end submit

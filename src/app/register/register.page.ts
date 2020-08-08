@@ -78,7 +78,7 @@ export class RegisterPage implements OnInit {
     if (this.email == null || this.password == null){
       this.errorMessage = "Registration fields cannot be empty"
     }
-    else if(this.password.length <= 7){
+    else if(this.password.length < 7){
       this.errorMessage = "Password must be 7 or more characters";
     } 
     else {
