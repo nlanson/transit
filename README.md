@@ -11,7 +11,7 @@ npm install
 ```
 <br>
 
-Use the ionic cli to host on a local nodejs server
+Use the ionic cli to host on a local NodeJS server
 ```
 ionic serve
 ```
