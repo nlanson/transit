@@ -1,5 +1,6 @@
 # TransitApp
 Transit is an app to record employee info.
+<br>
 Built using Angular 10, Ionic 5 and Firebase.
 <br>
 
