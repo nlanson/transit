@@ -49,6 +49,7 @@ export class LoginPage implements OnInit {
     console.log("login");
     this.email = this.LoginForm.value.inputUsername;
     this.password = this.LoginForm.value.inputPassword;
+    this.errorMessage = '';
 
     if(this.email ==  null || this.password == null){
       this.errorMessage = "Username or password cannot be empty!";
