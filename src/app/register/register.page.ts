@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import {  MenuController } from '@ionic/angular';
 import{ Router, ActivatedRoute } from '@angular/router';
 import {  FormGroup, FormBuilder, Validators } from '@angular/forms'
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({

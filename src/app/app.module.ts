@@ -11,7 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from "@angular/fire/auth";
-import { AuthService } from './auth.service';
+import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { AuthService } from './services/auth.service';
+import { EmployeesService } from './services/employees.service'
 import { AuthGuard } from './auth.guard'
 
 
@@ -34,11 +36,13 @@ var firebaseConfig = {
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   providers: [
     StatusBar,
     AuthService,
+    EmployeesService,
     AuthGuard,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

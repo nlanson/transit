@@ -8,5 +8,16 @@
 </ion-header>
 
 <ion-content>
-Add Works
+  <h3>Add Employee</h3>
+  <form [formGroup]="AddForm" (ngSubmit)="submit()">
+    <ion-item>
+      <ion-label position="floating">First Name</ion-label>
+      <ion-input formControlName="fname" type="text" id="fname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input formControlName="lname" type="text" id="lname"></ion-input>
+    </ion-item>
+    <ion-button type="submit" color="primary" class="ion-margin" expand="block">Add Employee</ion-button>
+  </form>
 </ion-content>
