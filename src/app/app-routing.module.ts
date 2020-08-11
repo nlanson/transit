@@ -30,6 +30,11 @@ const routes: Routes = [
     path: 'reports',
     loadChildren: () => import('./reports/reports.module').then( m => m.ReportsPageModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit/:id',
+    loadChildren: () => import('./edit/edit.module').then( m => m.EditPageModule),
+    canActivate: [AuthGuard]
   }
 ];
 

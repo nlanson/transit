@@ -8,5 +8,17 @@
 </ion-header>
 
 <ion-content>
-Home Works!
+  <div *ngFor="let  employee of employees | async "> 
+    <ion-item>
+     <p>
+       {{ employee.id }}
+       <br>
+       {{ employee.fname }}
+       <br>
+       {{ employee.lname }}
+     </p>
+     <ion-button color="primary" [routerLink]="['/edit', employee.id]"> Edit </ion-button>
+     <ion-button color="danger" (click)="delete(employee.id)"> Delete </ion-button>
+    </ion-item>
+  </div>
 </ion-content>

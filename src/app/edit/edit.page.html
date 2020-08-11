@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>Edit Employee</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3>Edit Employee</h3>
+  <form [formGroup]="editForm" (ngSubmit)="submit()">
+    <ion-item>
+      <ion-label position="floating">First Name</ion-label>
+      <ion-input formControlName="fname" type="text" id="fname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input formControlName="lname" type="text" id="lname"></ion-input>
+    </ion-item>
+    <ion-button type="submit" color="primary" class="ion-margin" expand="block">Submit</ion-button>
+  </form>
+</ion-content>

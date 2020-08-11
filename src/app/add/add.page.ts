@@ -30,8 +30,12 @@ export class AddPage implements OnInit {
 
   submit(){
     console.log("submit");
-    this.es.add(this.AddForm.value);
+    if(this.AddForm.value.fname == null || this.AddForm.value.lname == null){
+      console.log("form cannot be empty");
+    } else{
+      this.es.add(this.AddForm.value);
     this.AddForm.reset();
+    }
   }
 
 }

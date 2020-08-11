@@ -52,7 +52,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Nice, it worked!');
-        this.navroute.navigate(['home']);
+        this.navroute.navigate(['/home']);
         
       })
       .catch(err => {
