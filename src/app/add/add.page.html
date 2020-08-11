@@ -9,6 +9,10 @@
 
 <ion-content>
   <h3>Add Employee</h3>
+  <div class="error ion-text-center">
+    {{errorMessage}}
+  </div>
+  
   <form [formGroup]="AddForm" (ngSubmit)="submit()">
     <ion-item>
       <ion-label position="floating">First Name</ion-label>

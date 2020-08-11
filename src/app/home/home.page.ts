@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {  MenuController } from '@ionic/angular';
+import { Router } from '@angular/router'
 import { EmployeesService } from '../services/employees.service';
-import { Observable } from 'rxjs'
+import { Observable } from 'rxjs';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +19,8 @@ export class HomePage implements OnInit {
   constructor(
     private menuCtrl: MenuController,
     private es: EmployeesService,
+    private navroute: Router,
+    private alertController: AlertController
   ) { 
     this.employees = es.getEmployees()
   }
@@ -26,11 +30,42 @@ export class HomePage implements OnInit {
      
     }//end init
 
-  delete(id){
-    this.es.deleteEmployee(id);
+  deleteConfirm(id){ //show alert
+    this.presentAlertConfirm(id);
+
   }
-  
 
+  async presentAlertConfirm(id) { //present alert
+    const alert = await this.alertController.create({
+      header: 'Confirm Delete',
+      message: 'Are you sure you want to  <strong>delete</strong>?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (cancel) => {
+            console.log('Cancelled Delete');
+          }
+        }, {
+          text: 'Delete',
+          handler: (del) => {
+            this.delete(id);
+          }
+        }
+      ]
+    });
 
+    await alert.present();
+  }
+
+  delete(id){ //delete employee
+    this.es.deleteEmployee(id);
+
+  }
+
+  gotoAdd(){
+    this.navroute.navigate(['/add']);
+  }
 
 }//end class

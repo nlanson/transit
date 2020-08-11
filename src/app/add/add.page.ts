@@ -12,6 +12,7 @@ import {  FormGroup, FormBuilder, Validators } from '@angular/forms'
 export class AddPage implements OnInit {
 
   AddForm: FormGroup;
+  errorMessage: string;
   
   constructor(
     private es: EmployeesService,
@@ -31,7 +32,7 @@ export class AddPage implements OnInit {
   submit(){
     console.log("submit");
     if(this.AddForm.value.fname == null || this.AddForm.value.lname == null){
-      console.log("form cannot be empty");
+      this.errorMessage = "Please fill all fields"
     } else{
       this.es.add(this.AddForm.value);
     this.AddForm.reset();

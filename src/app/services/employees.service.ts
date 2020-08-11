@@ -31,7 +31,6 @@ export class EmployeesService {
     }
 
     deleteEmployee(id) {
-      console.log(id);
       this.fdb.object("employees/" + id).remove()
         .then((ref) => {
           console.log("success");
