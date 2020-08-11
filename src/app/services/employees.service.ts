@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database'
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database'
 import { Router } from '@angular/router'
 import { AddPage } from '../add/add.page';
 import { HomePage } from '../home/home.page';
@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class EmployeesService {
+  
+  item: any;
   
   constructor(
     private fdb: AngularFireDatabase,
@@ -28,6 +30,12 @@ export class EmployeesService {
 
     getEmployees(){
       return this.fdb.list('employees').valueChanges();
+    }
+
+    getSingleEmployee(id: string) { //Doesn't return single employee
+      const itemPath =  `employees/${id}`;
+      this.item = this.fdb.list(itemPath);
+      return this.item
     }
 
     deleteEmployee(id) {

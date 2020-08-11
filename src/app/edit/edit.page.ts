@@ -32,9 +32,11 @@ export class EditPage implements OnInit {
       this.id = params["id"];
     });
 
-    this.employees = this.es.getEmployees();
+    this.item = this.es.getSingleEmployee(this.id);
+    console.log(this.item); //returns strange object
+    console.log(this.item.fname);// shows as undefined
+    console.log(this.item.lname);//shows as undefined
     
-    this.item = this.employees[this.id];
 
     this.editForm = this.fb.group({
       fname: [null], //cant get this.item.fname (comes as undefined)
@@ -43,16 +45,16 @@ export class EditPage implements OnInit {
 
   }//end init
 
+
   submit(){
     const form = this.editForm.value;
     
-    if(form.fname == null || form.lname == null){  //if form is empty, wont submit
+    if(form.fname == null || form.lname == null){  //Validation
       this.errorMessage = "Please fill all fields"
     } else{
       this.es.editEmployee(this.id, form);
     }
   }
-
 
 
   ngOnDestroy() {
