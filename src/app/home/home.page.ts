@@ -26,9 +26,12 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-      this.menuCtrl.enable(true);
      
     }//end init
+
+    ionViewWillEnter() {
+      this.menuCtrl.enable(true);
+     }
 
   deleteConfirm(id){ //show alert
     this.presentAlertConfirm(id);
