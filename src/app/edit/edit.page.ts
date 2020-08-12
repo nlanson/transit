@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {  MenuController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { EmployeesService } from '../services/employees.service';
@@ -14,16 +15,17 @@ export class EditPage implements OnInit {
 
   editForm: FormGroup;
   sub: any;
-  employees: Observable<any[]>;
   id: string;
-  employee: any;
   errorMessage: string;
+  fname: string;
+  lname: string;
   
   constructor(
     private es: EmployeesService,
     private navroute: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
+    private menuCtrl: MenuController,
     private fdb: AngularFireDatabase
   ) { }
    
@@ -33,17 +35,21 @@ export class EditPage implements OnInit {
      this.sub = this.route.params.subscribe(params => {
       this.id = params["id"];
     });
-    
-    this.employee = this.es.getSingleEmployee(this.id); //NOT RETURNING AN EMPLOYEE
-    console.log(this.employee);
+
+    this.fname = this.es.giveFVal(); //fill this.fname with service stored fname
+    this.lname = this.es.giveLVal(); //fill this.lname with service stored lname
     
 
     this.editForm = this.fb.group({
-      fname: [null], //cant get this.employee.fname (comes as undefined)
-      lname: [null]  //cant get this.employee.fname (comes as undefined)
+      fname: [this.fname],
+      lname: [this.lname]  
     });
 
   }//end init
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+   }
 
 
   submit(){
@@ -59,6 +65,7 @@ export class EditPage implements OnInit {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+    this.es.delVal();
   }
 
 }

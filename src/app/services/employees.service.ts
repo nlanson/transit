@@ -10,6 +10,8 @@ import { Observable } from 'rxjs';
 export class EmployeesService {
   
   item: any;
+  fname: string;
+  lname: string;
   
   constructor(
     public fdb: AngularFireDatabase,
@@ -30,6 +32,25 @@ export class EmployeesService {
 
     getEmployees(){
       return this.fdb.list('employees').valueChanges();
+    }
+
+    storeVal(fname, lname){
+      this.fname = fname;
+      this.lname = lname;
+      console.log(this.fname + " " + this.lname);
+    }
+
+    giveFVal() {
+      return this.fname;
+    }
+
+    giveLVal() {
+      return this.lname;
+    }
+
+    delVal(){
+      this.fname = null;
+      this.lname = null;
     }
 
     getSingleEmployee(id: string) { //Doesn't return single employee

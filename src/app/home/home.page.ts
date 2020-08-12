@@ -35,6 +35,11 @@ export class HomePage implements OnInit {
 
   }
 
+  edit(id, fname, lname){ //start the edit process
+    this.es.storeVal(fname, lname);
+    this.navroute.navigate(['edit', id]);
+  }
+
   async presentAlertConfirm(id) { //present alert
     const alert = await this.alertController.create({
       header: 'Confirm Delete',
