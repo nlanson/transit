@@ -14,32 +14,33 @@ export class EditPage implements OnInit {
 
   editForm: FormGroup;
   sub: any;
-  employees: any;
+  employees: Observable<any[]>;
   id: string;
-  item: any;
+  employee: any;
   errorMessage: string;
   
   constructor(
     private es: EmployeesService,
     private navroute: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private fdb: AngularFireDatabase
   ) { }
+   
 
   ngOnInit() {
      // This code graps the "id" from the URL
      this.sub = this.route.params.subscribe(params => {
       this.id = params["id"];
     });
-
-
-    this.item = this.es.getSingleEmployee(this.id);
-    console.log(this.item); //returns strange object
+    
+    this.employee = this.es.getSingleEmployee(this.id); //NOT RETURNING AN EMPLOYEE
+    console.log(this.employee);
     
 
     this.editForm = this.fb.group({
-      fname: [null], //cant get this.item.fname (comes as undefined)
-      lname: [null]  //cant get this.item.fname (comes as undefined)
+      fname: [null], //cant get this.employee.fname (comes as undefined)
+      lname: [null]  //cant get this.employee.fname (comes as undefined)
     });
 
   }//end init

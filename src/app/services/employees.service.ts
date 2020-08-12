@@ -33,10 +33,8 @@ export class EmployeesService {
     }
 
     getSingleEmployee(id: string) { //Doesn't return single employee
-      const itemPath =  `employees/${id}`;
-      this.item = this.fdb.list(itemPath);
-      return this.item;
-      
+    const itemPath =  `people/${id}`;  
+    return this.fdb.list(itemPath); 
     }
 
     deleteEmployee(id) {
