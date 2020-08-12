@@ -12,7 +12,7 @@ export class EmployeesService {
   item: any;
   
   constructor(
-    private fdb: AngularFireDatabase,
+    public fdb: AngularFireDatabase,
     private navroute: Router,
     ) {}
   
@@ -35,7 +35,8 @@ export class EmployeesService {
     getSingleEmployee(id: string) { //Doesn't return single employee
       const itemPath =  `employees/${id}`;
       this.item = this.fdb.list(itemPath);
-      return this.item
+      return this.item;
+      
     }
 
     deleteEmployee(id) {

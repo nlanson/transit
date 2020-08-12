@@ -32,10 +32,9 @@ export class EditPage implements OnInit {
       this.id = params["id"];
     });
 
+
     this.item = this.es.getSingleEmployee(this.id);
     console.log(this.item); //returns strange object
-    console.log(this.item.fname);// shows as undefined
-    console.log(this.item.lname);//shows as undefined
     
 
     this.editForm = this.fb.group({
