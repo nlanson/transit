@@ -18,7 +18,7 @@ export class EmployeesService {
     private navroute: Router,
     ) {}
   
-    add(employee) {
+    add(employee) { //add employee
       this.fdb.list("employees").push(employee)
       .then((ref) => {
         console.log(ref);
@@ -30,35 +30,11 @@ export class EmployeesService {
       this.navroute.navigate(['/home']);
     } 
 
-    getEmployees(){
+    getEmployees(){ //get all employees into an array
       return this.fdb.list('employees').valueChanges();
     }
 
-    storeVal(fname, lname){
-      this.fname = fname;
-      this.lname = lname;
-      console.log(this.fname + " " + this.lname);
-    }
-
-    giveFVal() {
-      return this.fname;
-    }
-
-    giveLVal() {
-      return this.lname;
-    }
-
-    delVal(){
-      this.fname = null;
-      this.lname = null;
-    }
-
-    getSingleEmployee(id: string) { //Doesn't return single employee
-    const itemPath =  `people/${id}`;  
-    return this.fdb.list(itemPath); 
-    }
-
-    deleteEmployee(id) {
+    deleteEmployee(id) { //delete employee
       this.fdb.object("employees/" + id).remove()
         .then((ref) => {
           console.log("success");
@@ -67,7 +43,7 @@ export class EmployeesService {
         })
     }
 
-    editEmployee(id: string, employee) {
+    editEmployee(id: string, employee) { //edit employee
       this.fdb.list("employees").update(id, { fname: employee.fname, lname: employee.lname});
       this.navroute.navigate(['/home']);
     }

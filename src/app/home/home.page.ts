@@ -27,19 +27,18 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
      
-    }//end init
+  }//end init
 
-    ionViewWillEnter() {
+  ionViewWillEnter() {
       this.menuCtrl.enable(true);
-     }
+  }
 
   deleteConfirm(id){ //show alert
     this.presentAlertConfirm(id);
 
   }
 
-  edit(id, fname, lname){ //start the edit process
-    this.es.storeVal(fname, lname);
+  edit(id){ //navigates to edit page with id parameter
     this.navroute.navigate(['edit', id]);
   }
 

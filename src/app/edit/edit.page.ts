@@ -17,6 +17,7 @@ export class EditPage implements OnInit {
   sub: any;
   id: string;
   errorMessage: string;
+  employee: any;
   fname: string;
   lname: string;
   
@@ -36,20 +37,20 @@ export class EditPage implements OnInit {
       this.id = params["id"];
     });
 
-    this.fname = this.es.giveFVal(); //fill this.fname with service stored fname
-    this.lname = this.es.giveLVal(); //fill this.lname with service stored lname
-    
-
-    this.editForm = this.fb.group({
-      fname: [this.fname],
-      lname: [this.lname]  
-    });
-
+    this.StartForm(this.id);
   }//end init
 
-  ionViewWillEnter() {
-    this.menuCtrl.enable(false);
-   }
+
+  StartForm(id: string){
+    const itemPath =  `employees/${id}`; 
+    this.employee = this.fdb.list(itemPath).valueChanges().subscribe((emp) => { //get single employee and put into form
+      this.editForm = this.fb.group({
+        fname: [emp[0]],
+        lname: [emp[2]]  
+      });
+      //console.log(emp); <- print on console the returned single employee array
+    });
+  }
 
 
   submit(){
@@ -64,8 +65,7 @@ export class EditPage implements OnInit {
 
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
-    this.es.delVal();
+    this.employee.unsubscribe();
   }
 
 }
