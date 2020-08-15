@@ -65,6 +65,12 @@ export class LoginPage implements OnInit {
     }
   }//end submit
 
+  quickLogin(){
+    this.email = "fast-login@transit.com"
+    this.password = "admin1234"
+    this.authService.login(this.email, this.password);
+  }
+
  
 
 }

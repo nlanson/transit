@@ -21,12 +21,13 @@
     <ion-button type="submit" color="primary" class="ion-margin" expand="block">Login</ion-button>
   </form>
 
- 
-
   <div class="ion-text-center register">
     <br>
     <a class="register" (click)="gotoReg()"><u>Register</u></a>
   </div>
+
+  <!--One Click Login. Remove this line and function quickLogin to disable-->
+  <br><br><ion-button color="secondary" class="ion-margin ion-text-center" expand="block" (click)="quickLogin()">One Click Login</ion-button>
 
   {{display}}
 

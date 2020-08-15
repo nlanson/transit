@@ -65,7 +65,7 @@ export class AuthService {
   logout() {
     this.firebaseAuth
       .signOut();
-      console.log("USer has logged out");
+      console.log("User has logged out");
   }
 
   alert(){ //setting alert details
