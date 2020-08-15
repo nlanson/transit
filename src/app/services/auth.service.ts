@@ -51,7 +51,7 @@ export class AuthService {
     this.firebaseAuth
       .signInWithEmailAndPassword(email, password)
       .then(value => {
-        console.log('Nice, it worked!');
+        console.log('Login Success');
         this.navroute.navigate(['/home']);
         
       })
@@ -65,7 +65,7 @@ export class AuthService {
   logout() {
     this.firebaseAuth
       .signOut();
-      console.log("logged out");
+      console.log("USer has logged out");
   }
 
   alert(){ //setting alert details
