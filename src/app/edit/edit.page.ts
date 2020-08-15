@@ -45,10 +45,11 @@ export class EditPage implements OnInit {
     const itemPath =  `employees/${id}`; 
     this.employee = this.fdb.list(itemPath).valueChanges().subscribe((emp) => { //get single employee and put into form
       this.editForm = this.fb.group({
-        fname: [emp[0]],
-        lname: [emp[2]]  
+        fname: [emp[1]],
+        lname: [emp[3]],
+        department: [emp[0]]  
       });
-      //console.log(emp); <- print on console the returned single employee array
+      console.log(emp);
     });
   }
 
@@ -56,7 +57,7 @@ export class EditPage implements OnInit {
   submit(){
     const form = this.editForm.value;
     
-    if(form.fname == null || form.lname == null){  //Validation
+    if(form.fname == null || form.lname == null || form.department == null){  //Validation
       this.errorMessage = "Please fill all fields"
     } else{
       this.es.editEmployee(this.id, form);

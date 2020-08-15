@@ -24,14 +24,15 @@ export class AddPage implements OnInit {
     this.AddForm = this.fb.group(
       {
         fname: [null],
-        lname: [null]
+        lname: [null],
+        department: [null]
       }
     );
   }// end init
 
   submit(){
     console.log("submit");
-    if(this.AddForm.value.fname == null || this.AddForm.value.lname == null){
+    if(this.AddForm.value.fname == null || this.AddForm.value.lname == null || this.AddForm.value.department == null){
       this.errorMessage = "Please fill all fields"
     } else{
       this.es.add(this.AddForm.value);

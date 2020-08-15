@@ -22,6 +22,14 @@
       <ion-label position="floating">Last Name</ion-label>
       <ion-input formControlName="lname" type="text" id="lname"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label position="floating">Department</ion-label>
+      <ion-select placeholder="Select Department" formControlName="department">
+        <ion-select-option value="Finance">Finance</ion-select-option>
+        <ion-select-option value="Transport">Transport</ion-select-option>
+        <ion-select-option value="Office">Office</ion-select-option>
+      </ion-select>
+    </ion-item>
     <ion-button type="submit" color="primary" class="ion-margin" expand="block">Submit</ion-button>
   </form>
 </ion-content>
