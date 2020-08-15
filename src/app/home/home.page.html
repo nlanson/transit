@@ -11,16 +11,16 @@
   <div *ngFor="let  employee of employees | async "> 
     <ion-item>
      <p>
-       {{ employee.id }}
-       <br>
-       {{ employee.fname }}
-       <br>
-       {{ employee.lname }}
-       <br>
-       {{ employee.department }}
+        <strong>{{ employee.fname }} {{ employee.lname }}</strong>
+        <br>
+        Department: {{ employee.department }}
+        <br>
+        <span class="displayid">ID: {{ employee.id }}</span>
      </p>
-     <ion-button color="primary" (click)="edit(employee.id)"> Edit </ion-button>
-     <ion-button color="danger" (click)="deleteConfirm(employee.id)"> Delete </ion-button>
+     <div class="ion-margin">
+      <ion-button color="primary" (click)="edit(employee.id)"> Edit </ion-button>
+      <ion-button color="danger" (click)="deleteConfirm(employee.id)" > Delete </ion-button>
+     </div>
     </ion-item>
   </div>
   <ion-button color="primary" class="ion-margin" expand="block" (click)="gotoAdd()">Add Employee</ion-button>
