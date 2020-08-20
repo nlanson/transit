@@ -25,7 +25,14 @@ export class AddPage implements OnInit {
       {
         fname: [null],
         lname: [null],
-        department: [null]
+        address: [null],
+        department: [null],
+        licencenumber: [null],
+        licencecardnumber: [null],
+        licenceexpiry: [null],
+        licencebacknumber: [null],
+        licenceclass: [null],
+        licencecondition: [null],
       }
     );
   }// end init

@@ -14,6 +14,7 @@
   </div>
   
   <form [formGroup]="AddForm" (ngSubmit)="submit()">
+    <h4 class="ion-margin">Person Details</h4>
     <ion-item>
       <ion-label position="floating">First Name</ion-label>
       <ion-input formControlName="fname" type="text" id="fname"></ion-input>
@@ -22,7 +23,10 @@
       <ion-label position="floating">Last Name</ion-label>
       <ion-input formControlName="lname" type="text" id="lname"></ion-input>
     </ion-item>
-    <br>
+    <ion-item>
+      <ion-label position="floating">Address</ion-label>
+      <ion-input formControlName="address" type="text" id="address"></ion-input>
+    </ion-item>
     <ion-item>
       <ion-label position="floating">Department</ion-label>
       <ion-select placeholder="Select Department" formControlName="department">
@@ -32,6 +36,46 @@
         <ion-select-option value="Executive">Executive</ion-select-option>
       </ion-select>
     </ion-item>
+    <br><br>
+    <h4 class="ion-margin">Licence Details</h4>
+    <ion-item>
+      <ion-label position="floating">Licence No.</ion-label>
+      <ion-input formControlName="licencenumber" type="number" id="licencenumber"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Card No.</ion-label>
+      <ion-input formControlName="licencecardnumber" type="number" id="licencecardnumber"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Expiry</ion-label>
+      <ion-input formControlName="licenceexpiry" type="date" id="licenceexpiry"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Back No.</ion-label>
+      <ion-input formControlName="licencebacknumber" type="number" id="licencebacknumber"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Licence Class</ion-label>
+      <ion-select placeholder="Select Class" formControlName="licenceclass">
+        <ion-select-option value="C">C</ion-select-option>
+        <ion-select-option value="R">R</ion-select-option>
+        <ion-select-option value="LR">LR</ion-select-option>
+        <ion-select-option value="MR">MR</ion-select-option>
+        <ion-select-option value="HR">HR</ion-select-option>
+        <ion-select-option value="HC">HC</ion-select-option>
+        <ion-select-option value="MC">MC</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Licence Conditions</ion-label>
+      <ion-select placeholder="Select Condition" formControlName="licencecondition">
+        <ion-select-option value="LRN">LRN (Learner)</ion-select-option>
+        <ion-select-option value="P1">P1 (Red P)</ion-select-option>
+        <ion-select-option value="P2">P2 (Green P)</ion-select-option>
+        <ion-select-option value="Full">Full Licence</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
     <ion-button type="submit" color="primary" class="ion-margin" expand="block">Add Employee</ion-button>
   </form>
 </ion-content>
