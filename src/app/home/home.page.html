@@ -16,11 +16,16 @@
         Department: {{ employee.department }}
         <br>
         <span class="displayid">ID: {{ employee.id }}</span>
+        <br>
      </p>
+     
      <div class="ion-margin">
       <ion-button color="primary" (click)="edit(employee.id)"> Edit </ion-button>
       <ion-button color="danger" (click)="deleteConfirm(employee.id)" > Delete </ion-button>
+      <br>
+      <a (click)="gotoView(employee.id)" class="details ion-text-center">Show Details</a>
      </div>
+     
     </ion-item>
   </div>
   <ion-button color="primary" class="ion-margin" expand="block" (click)="gotoAdd()">Add Employee</ion-button>

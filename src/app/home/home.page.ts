@@ -42,6 +42,10 @@ export class HomePage implements OnInit {
     this.navroute.navigate(['edit', id]);
   }
 
+  gotoView(id){
+    this.navroute.navigate(['view', id]);
+  }
+
   async presentAlertConfirm(id) { //present alert
     const alert = await this.alertController.create({
       header: 'Confirm Delete',

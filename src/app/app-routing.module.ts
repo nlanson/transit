@@ -35,6 +35,11 @@ const routes: Routes = [
     path: 'edit/:id',
     loadChildren: () => import('./edit/edit.module').then( m => m.EditPageModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'view/:id',
+    loadChildren: () => import('./view/view.module').then( m => m.ViewPageModule),
+    canActivate: [AuthGuard]
   }
 ];
 

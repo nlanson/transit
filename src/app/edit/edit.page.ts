@@ -46,9 +46,15 @@ export class EditPage implements OnInit {
     this.employee = this.fdb.list(itemPath).valueChanges().subscribe((emp) => { //get single employee and put into form
       this.editForm = this.fb.group({
         fname: [emp[2]],
-        lname: [emp[4]],
+        lname: [emp[10]],
         address: [emp[0]],
-        department: [emp[1]]  
+        department: [emp[1]],
+        licencenumber: [emp[9]],
+        licencecardnumber: [emp[5]],
+        licenceexpiry: [emp[8]],
+        licencebacknumber: [emp[4]],
+        licenceclass: [emp[6]],
+        licencecondition: [emp[7]], 
       });
       console.log(emp);
     });

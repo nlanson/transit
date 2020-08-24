@@ -44,7 +44,7 @@ export class EmployeesService {
     }
 
     editEmployee(id: string, employee) { //edit employee
-      this.fdb.list("employees").update(id, { fname: employee.fname, lname: employee.lname, department: employee.department, address: employee.address});
+      this.fdb.list("employees").update(id, { fname: employee.fname, lname: employee.lname, department: employee.department, address: employee.address, licencenumber: employee.licencenumber, licencecardnumber: employee.licencecardnumber, licenceexpiry: employee.licenceexpiry, licencebacknumber: employee.licencebacknumber, licenceclass: employee.licenceclass, licencecondition: employee.licencecondition});
       this.navroute.navigate(['/home']);
     }
   
