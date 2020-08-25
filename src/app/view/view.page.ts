@@ -43,18 +43,23 @@ export class ViewPage implements OnInit {
 
   }//end init
 
-  setValues(id){
+  setValues(id){ //uses snapshot to get data (no live reloading.)
+    let i = 0;
+    var employeeData = new Array();
     const itemPath =  `employees/${id}`;
-    this.employee = this.fdb.list(itemPath).snapshotChanges().forEach(snapshot => {
-       snapshot.forEach(snapshot => { //currently console logs each key and data in key but cant put the key data into array :(
-        var key = snapshot.key; // from https://firebase.google.com/docs/reference/js/firebase.database.DataSnapshot
-        console.log("Key: " + key);
-        var childData = snapshot.payload.val();
-        console.log("Child: " + childData);
-
+    this.fdb.list(itemPath).snapshotChanges().forEach(snapshot => {
+      snapshot.forEach(snapshot => { 
+        employeeData[i] = snapshot.payload.val();
+        console.log(employeeData[i]);
+        i++
       });
     });
-
+    return employeeData
   }//end setValues
+
+  show(){
+    console.log(this.employee);
+
+  }
 
 }//end class
