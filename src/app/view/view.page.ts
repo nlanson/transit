@@ -41,6 +41,11 @@ export class ViewPage implements OnInit {
 
     this.employee = this.setValues(this.id);
 
+    this.fname = this.employee[2];
+    this.lname = this.employee[10];
+    this.address = this.employee[0];
+    this.department = this.employee[1];
+
   }//end init
 
   setValues(id){ //uses snapshot to get data (no live reloading.)
