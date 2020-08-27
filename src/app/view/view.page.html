@@ -8,6 +8,38 @@
 </ion-header>
 
 <ion-content>
-view works!
-<button (click)="show()">log</button>
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>
+      {{this.employee[2]}} {{this.employee[10]}} <ion-icon name="person-outline"></ion-icon>
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-card-subtitle>Employee Details:</ion-card-subtitle>
+    Department: {{this.employee[1]}}
+    <br>
+    Address: {{this.employee[0]}}
+    <br><br>
+
+    <ion-card-subtitle>Licence Details:</ion-card-subtitle>
+    Licence Number: {{this.employee[9]}}
+    <br>
+    Expiry: {{this.employee[8]}}
+    <br>
+    Licence Class: {{this.employee[6]}}
+    <br>
+    Licence Condition: {{this.employee[7]}}
+    <br>
+    Card nuber: {{this.employee[5]}}
+    <br>
+    Back Number: {{this.employee[4]}}
+    <br><br>
+
+    <span class="small">Employee ID: {{this.employee[3]}}</span>
+  </ion-card-content>
+</ion-card>
+
+<ion-button color="primary" class="ion-margin" expand="block" routerLink="/home">Return</ion-button>
+<ion-button color="secondary" class="ion-margin" expand="block" (click)="edit(this.id)">Edit</ion-button>
+<ion-button color="danger" class="ion-margin" expand="block" (click)="deleteConfirm(this.id)">Delete</ion-button>
 </ion-content>

@@ -64,7 +64,17 @@ export class EditPage implements OnInit {
   submit(){
     const form = this.editForm.value;
     
-    if(form.fname == null || form.lname == null || form.department == null){  //Validation
+    if(form.fname == null ||
+      form.lname == null ||
+      form.department == null ||
+      form.address == null ||
+      form.licencenumber == null ||
+      form.licencecardnumber == null ||
+      form.licenceexpiry == null ||
+      form.licencebacknumber == null ||
+      form.licenceclass == null ||
+      form.licencecondition == null
+     ){  //Validation
       this.errorMessage = "Please fill all fields"
     } else{
       this.es.editEmployee(this.id, form);
