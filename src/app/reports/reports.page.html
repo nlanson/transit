@@ -8,5 +8,88 @@
 </ion-header>
 
 <ion-content>
-Reports Works!
+    <ion-button class="ion-margin" color="secondary" (click)="selectDept()">Department Report</ion-button>
+    <ion-button float="right" class="ion-margin" color="secondary" (click)="selectLic()">Licence Report</ion-button>
+
+  <div *ngIf="selDep">
+    <form [formGroup]="departmentForm" (ngSubmit)="submitDepartment()">
+      <ion-item>
+        <ion-label position="floating">Department</ion-label>
+        <ion-select placeholder="Select Department" formControlName="department">
+          <ion-select-option value="Finance">Finance</ion-select-option>
+          <ion-select-option value="Transport">Transport</ion-select-option>
+          <ion-select-option value="Office">Office</ion-select-option>
+          <ion-select-option value="Executive">Executive</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button class="ion-margin" type="submit">Submit</ion-button>
+      <ion-button class="ion-margin" color="danger" (click)="closeForm()">Close</ion-button>
+    </form>
+  </div>
+
+  <div *ngIf="selLic">
+    <form [formGroup]="licenceForm" (ngSubmit)="submitLicence()">
+      <ion-item>
+        <ion-label position="floating">Licence Class</ion-label>
+        <ion-select placeholder="Select Class" formControlName="licenceclass">
+          <ion-select-option value="C">C</ion-select-option>
+          <ion-select-option value="R">R</ion-select-option>
+          <ion-select-option value="LR">LR</ion-select-option>
+          <ion-select-option value="MR">MR</ion-select-option>
+          <ion-select-option value="HR">HR</ion-select-option>
+          <ion-select-option value="HC">HC</ion-select-option>
+          <ion-select-option value="MC">MC</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Licence Conditions</ion-label>
+        <ion-select placeholder="Select Condition" formControlName="licencecondition">
+          <ion-select-option value="LRN">LRN (Learner)</ion-select-option>
+          <ion-select-option value="P1">P1 (Red P)</ion-select-option>
+          <ion-select-option value="P2">P2 (Green P)</ion-select-option>
+          <ion-select-option value="Full">Full Licence</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button class="ion-margin" type="submit">Submit</ion-button>
+      <ion-button class="ion-margin" color="danger" (click)="closeForm()">Close</ion-button>
+    </form>
+  </div>
+
+  <div *ngIf="showDept">
+    <p class="showTitle">Listing Employees from {{selectedDepartment}} Department:</p>
+    <div *ngFor="let  employee of employees | async ">
+      <div *ngIf="employee.department === this.selectedDepartment">
+        <ion-item>
+          <p>
+              <strong>{{ employee.fname }} {{ employee.lname }}</strong>
+              <br>
+              Department: {{ employee.department }}
+              <br>
+              <span class="displayid">ID: {{ employee.id }}</span>
+              <br>
+          </p>
+        </ion-item>
+      </div>
+    </div>
+    <ion-button class="ion-margin" color="danger" (click)="close()">Close</ion-button>
+  </div>
+
+  <div *ngIf="showLic">
+    <p class="showTitle">Listing Employees with {{selectedClass}} Licence with {{selectedCondition}} Condition</p>
+    <div *ngFor="let  employee of employees | async ">
+      <div *ngIf="employee.licenceclass === this.selectedClass && employee.licencecondition === this.selectedCondition">
+        <ion-item>
+          <p>
+              <strong>{{ employee.fname }} {{ employee.lname }}</strong>
+              <br>
+              Department: {{ employee.department }}
+              <br>
+              <span class="displayid">ID: {{ employee.id }}</span>
+              <br>
+          </p>
+        </ion-item>
+      </div>
+    </div>
+    <ion-button class="ion-margin" color="danger" (click)="close()">Close</ion-button>
+  </div>
 </ion-content>
