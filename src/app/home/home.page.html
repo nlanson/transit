@@ -9,24 +9,28 @@
 
 <ion-content>
   <div *ngFor="let  employee of employees | async "> 
-    <ion-item>
-     <p class="leftside">
-        <strong>{{ employee.fname }} {{ employee.lname }}</strong>
-        <br>
-        Department: {{ employee.department }}
-        <br>
-        <span class="displayid">ID: {{ employee.id }}</span>
-        <br>
-     </p>
-     
-    <div class="ion-margin rightside">
-      <ion-button color="primary" (click)="edit(employee.id)"> Edit </ion-button>
-      <ion-button color="danger" (click)="deleteConfirm(employee.id)" > Delete </ion-button>
-      <br>
-      <ion-button color="secondary" (click)="gotoView(employee.id)">View</ion-button>
-    </div>
-     
-    </ion-item>
+    <ion-item-sliding>
+      <ion-item-options side="end">
+        <ion-item-option color="tertiary" (click)="edit(employee.id)">Edit</ion-item-option>
+        <ion-item-option color="danger" (click)="deleteConfirm(employee.id)">Delete</ion-item-option>
+      </ion-item-options>
+    
+      <ion-item (click)="gotoView(employee.id)">
+      <p class="leftside">
+          <strong>{{ employee.fname }} {{ employee.lname }}</strong>
+          <br>
+          Department: {{ employee.department }}
+          <br>
+          <span class="displayid">ID: {{ employee.id }}</span>
+          <br>
+      </p>
+      
+      <div class="ion-margin rightside">
+        <ion-icon name="chevron-forward-outline" size="large"></ion-icon>
+      </div>
+      
+      </ion-item>
+    </ion-item-sliding>
   </div>
-  <ion-button color="primary" class="ion-margin" expand="block" (click)="gotoAdd()">Add Employee</ion-button>
+  <ion-button color="secondary" class="ion-margin" expand="block" (click)="gotoAdd()">Add Employee</ion-button>
 </ion-content>
