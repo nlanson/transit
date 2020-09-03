@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {  MenuController } from '@ionic/angular';
 import { Router } from '@angular/router'
 import { EmployeesService } from '../services/employees.service';
 import { Observable } from 'rxjs';
 import { AlertController } from '@ionic/angular';
+import { IonItemSliding } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -38,8 +39,9 @@ export class HomePage implements OnInit {
 
   }
 
-  edit(id){ //navigates to edit page with id parameter
+  edit(id, slidingItem: IonItemSliding){ //navigates to edit page with id parameter
     this.navroute.navigate(['edit', id]);
+    slidingItem.close();
   }
 
   gotoView(id){
