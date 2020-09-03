@@ -55,6 +55,7 @@ export class ReportsPage implements OnInit {
     console.log("Showing Dept Selection...");
     this.selDep = true;
     this.selLic = false;
+    this.showLic = false;
     
   }
 
@@ -62,6 +63,8 @@ export class ReportsPage implements OnInit {
     console.log("Showing Licence Selection...");
     this.selLic = true;
     this.selDep = false;
+    this.showDept = false;
+    
   }
 
   submitDepartment(){

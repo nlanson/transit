@@ -10,7 +10,7 @@
 <ion-content>
   <div *ngFor="let  employee of employees | async "> 
     <ion-item>
-     <p>
+     <p class="leftside">
         <strong>{{ employee.fname }} {{ employee.lname }}</strong>
         <br>
         Department: {{ employee.department }}
@@ -19,12 +19,12 @@
         <br>
      </p>
      
-     <div class="ion-margin">
+    <div class="ion-margin rightside">
       <ion-button color="primary" (click)="edit(employee.id)"> Edit </ion-button>
       <ion-button color="danger" (click)="deleteConfirm(employee.id)" > Delete </ion-button>
       <br>
-      <a (click)="gotoView(employee.id)" class="details ion-text-center">Show Details</a>
-     </div>
+      <ion-button color="secondary" (click)="gotoView(employee.id)">View</ion-button>
+    </div>
      
     </ion-item>
   </div>
