@@ -52,8 +52,8 @@
       <ion-input formControlName="licencecardnumber" type="number" id="licencecardnumber"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Expiry</ion-label>
-      <ion-input formControlName="licenceexpiry" type="date" id="licenceexpiry"></ion-input>
+      <ion-label position="floating">Expiry</ion-label>
+      <ion-datetime formControlName="licenceexpiry" id="licenceexpiry" displayFormat="MM/YY" min="2020-09" max="2099"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Back No.</ion-label>
