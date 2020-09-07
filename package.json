@@ -29,6 +29,7 @@
     "@ionic/angular": "^5.0.0",
     "angularfire2": "^5.4.2",
     "cordova-ios": "6.1.0",
+    "cordova-res": "^0.15.1",
     "firebase": "^7.17.1",
     "rxjs": "~6.5.1",
     "tslib": "^1.10.0",
